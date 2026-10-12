@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>io.github.cboheng</groupId>
+  <artifactId>common-tools</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>common-tools</name>
+  <description>業界通用的 Java helper 工具集；static method 開箱即用，單檔 copy 即可使用。</description>
+
+  <properties>
+    <!-- Java 25 LTS：支援到 2030-09。helper 要能 copy 進 Java 25+ 的任何專案。 -->
+    <maven.compiler.release>25</maven.compiler.release>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+    <junit.version>6.1.3</junit.version>
+    <surefire.version>3.6.0</surefire.version>
+    <compiler.plugin.version>3.16.0</compiler.plugin.version>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <!-- JUnit 6 把 Platform / Jupiter / Vintage 統一成同一個版號，用 BOM 管理最省事。 -->
+      <dependency>
+        <groupId>org.junit</groupId>
+        <artifactId>junit-bom</artifactId>
+        <version>${junit.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <dependencies>
+    <!--
+      注意：main 區沒有任何 compile 依賴，這是刻意的。
+      所有 helper 只用 JDK 內建 API，才能做到「單檔 copy 進別的專案就能用」。
+      測試用的依賴一律 test scope，不會被帶進下游。
+    -->
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <!-- Surefire 3.x 官方建議明確宣告 launcher，避免 classpath 解析出現版本衝突。 -->
+      <groupId>org.junit.platform</groupId>
+      <artifactId>junit-platform-launcher</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>${compiler.plugin.version}</version>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>${surefire.version}</version>
+      </plugin>
+    </plugins>
+  </build>
+</project>
