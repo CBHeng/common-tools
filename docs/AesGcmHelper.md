@@ -3,7 +3,7 @@
 AES-256-GCM 加解密工具，可選擇把到期時間一起封進密文。
 全 `static` method、零外部依賴、單一檔案可直接 copy 進既有專案。
 
-> 原始碼：[`AesGcmHelper.java`](../src/main/java/io/github/cboheng/commontools/crypto/AesGcmHelper.java)　測試：[`AesGcmHelperTest.java`](../src/test/java/io/github/cboheng/commontools/crypto/AesGcmHelperTest.java)
+> 原始碼：[`AesGcmHelper.java`](../java/src/main/java/io/github/cboheng/commontools/crypto/AesGcmHelper.java)　測試：[`AesGcmHelperTest.java`](../java/src/test/java/io/github/cboheng/commontools/crypto/AesGcmHelperTest.java)
 
 ---
 
