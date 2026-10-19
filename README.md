@@ -11,7 +11,7 @@
 
 ## 工具
 
-- **[`AesGcmHelper`](src/main/java/io/github/cboheng/commontools/crypto/AesGcmHelper.java)**：AES-256-GCM 加解密，詳見 [docs/AesGcmHelper.md](docs/AesGcmHelper.md)
+- **[`AesGcmHelper`](java/src/main/java/io/github/cboheng/commontools/crypto/AesGcmHelper.java)**：AES-256-GCM 加解密，詳見 [docs/AesGcmHelper.md](docs/AesGcmHelper.md)
     - 加解密：認證加密，密文被改一個 bit 就解不開；輸出是 URL-safe token
     - 時效性：到期時間一起藏在密文裡，是否過期由應用層判斷
 

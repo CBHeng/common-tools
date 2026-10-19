@@ -3,7 +3,7 @@
 AES-256-GCM 加解密工具，可選擇把到期時間一起封進密文。
 全 `static` method、零外部依賴、單一檔案可直接 copy 進既有專案。
 
-> 原始碼：[`AesGcmHelper.java`](../src/main/java/io/github/cboheng/commontools/crypto/AesGcmHelper.java)　測試：[`AesGcmHelperTest.java`](../src/test/java/io/github/cboheng/commontools/crypto/AesGcmHelperTest.java)
+> 原始碼：[`AesGcmHelper.java`](../java/src/main/java/io/github/cboheng/commontools/crypto/AesGcmHelper.java)　測試：[`AesGcmHelperTest.java`](../java/src/test/java/io/github/cboheng/commontools/crypto/AesGcmHelperTest.java)
 
 ---
 
@@ -30,6 +30,9 @@ AES-256-GCM 加解密工具，可選擇把到期時間一起封進密文。
 
 ### 準備金鑰
 
+<details>
+<summary>Java</summary>
+
 ```java
 // 產生一把新金鑰（只做一次，存進 KMS / 環境變數，不要 commit）
 String base64Key = KeyRef.generate("2026-10").keyToBase64();
@@ -40,9 +43,14 @@ KeyRef keyRef = KeyRef.ofBase64(
         System.getenv("TOKEN_ENCRYPTION_KID"));  // 金鑰識別碼，例如 "2026-10"
 ```
 
+</details>
+
 `kid` 必須加解密兩端一致，否則一律解不開。改 kid 等於讓所有已發出的 token 失效。
 
 ### 一般加解密
+
+<details>
+<summary>Java</summary>
 
 ```java
 byte[] plaintext = "任意資料".getBytes(StandardCharsets.UTF_8);
@@ -51,7 +59,12 @@ String token    = AesGcmHelper.encrypt(plaintext, keyRef);
 byte[] restored = AesGcmHelper.decrypt(token, keyRef);
 ```
 
+</details>
+
 ### 時效性加解密
+
+<details>
+<summary>Java</summary>
 
 ```java
 // 發行：15 分鐘後失效
@@ -70,6 +83,8 @@ try {
     // 格式錯 / 被竄改 / 金鑰或 kid 不符 → 拒絕，不要回傳細節
 }
 ```
+
+</details>
 
 輸出的 token 是 URL-safe Base64，可以直接放進 query string、header、cookie。
 
