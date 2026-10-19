@@ -1,5 +1,3 @@
-# Java8 -> Java21 的升級筆記
-
 ## 1. Record Pattern + Switch Pattern：可讀性大優化
 
 | 特性 | 正式版本 | 作用 |
