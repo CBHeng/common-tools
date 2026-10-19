@@ -22,6 +22,10 @@
     - [詳細說明...](docs/AesGcmHelper.md)
     - Java 程式：[`AesGcmHelper.java`](java/src/main/java/io/github/cboheng/commontools/crypto/AesGcmHelper.java)
 
+## 其他紀錄
+
+1. [Java8 -> Java21 的升級筆記](docs/Java8-to-Java21.md)
+
 ## 開發環境
 
 - Java 25 (LTS)、Maven 3.10、JUnit 6
