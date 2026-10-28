@@ -25,6 +25,7 @@
 ## 其他紀錄
 
 1. [Java8 -> Java21 的升級筆記](docs/Java8-to-Java21.md)
+2. [Rust 新手冷知識](docs/Rust-Beginner-Tips.md)
 
 ## 開發環境
 
